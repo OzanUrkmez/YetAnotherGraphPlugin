@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "MultiNodeSelector.h"
+#include "Nodes/FlowControlNodes/MultiNodeSelector.h"
 #include "NthSelector.generated.h"
 
 /**

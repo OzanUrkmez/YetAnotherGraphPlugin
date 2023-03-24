@@ -1,8 +1,10 @@
 // Copyright (c) 2018 Jhonny Hueller
-#include "MultiNodeSelector.h"
-#include "Logger.h"
-
 #define LOCTEXT_NAMESPACE "MultiNodeSelector"
+#include "Nodes/FlowControlNodes/MultiNodeSelector.h"
+
+#include "Graphs/YAGraph.h"
+#include "Nodes/YANode.h"
+#include "Utility/Logger.h"
 
 UYANode * UMultiNodeSelector::GetNodePointer_Implementation()
 {

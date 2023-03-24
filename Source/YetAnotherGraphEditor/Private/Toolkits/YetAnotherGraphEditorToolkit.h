@@ -2,11 +2,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AssetEditorToolkit.h"
-#include "NotifyHook.h"
 #include "GraphEditor.h"
 #include "IDetailsView.h"
-#include "YAGraph.h"
+#include "Graphs/YAGraph.h"
 
 /**
  * 
@@ -22,8 +20,8 @@ public:
 	virtual FName GetToolkitFName() const override;
 	virtual FText GetBaseToolkitName() const override;
 	virtual FString GetWorldCentricTabPrefix() const override;
-	virtual void RegisterTabSpawners(const TSharedRef<FTabManager>& TabManager) override;
-	virtual void UnregisterTabSpawners(const TSharedRef<FTabManager>& TabManager) override;
+	virtual void RegisterTabSpawners(const TSharedRef<FTabManager>& tabManager) override;
+	virtual void UnregisterTabSpawners(const TSharedRef<FTabManager>& tabManager) override;
 	virtual void SaveAsset_Execute() override;
 
 	virtual void InitGraphAssetEditor(const EToolkitMode::Type InMode, const TSharedPtr<class IToolkitHost>& InToolkitHost, UYAGraph* InGraph);

@@ -1,9 +1,8 @@
 // Copyright (c) 2018 Jhonny Hueller
 #include "YetOtherAssetTypeActions.h"
-#include "YAGraph.h"
 #include "YetAnotherGraphEditorToolkit.h"
-#include "ModuleManager.h"
 #include "YetAnotherGraphEditor.h"
+#include "Graphs/YAGraph.h"
 
 #define LOCTEXT_NAMESPACE "YetOtherAssetTypeActions"
 

@@ -2,7 +2,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "YANode.h"
+#include "Nodes/YANode.h"
 #include "FlowControlNode.generated.h"
 
 /**

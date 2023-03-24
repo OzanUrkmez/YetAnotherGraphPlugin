@@ -1,19 +1,15 @@
 // Copyright (c) 2018 Jhonny Hueller
 #include "YetAnotherEdGraphSchema.h"
-#include "SubclassOf.h"
-#include "EditorLogger.h"
 #include "YAConnectionDrawingPolicy.h"
-#include "UObjectIterator.h"
 #include "YAEdGraphSchemaAction_NewNode.h"
 #include "EdGraph/EdGraph.h"
-#include "StartNode.h"
-#include "YAGraph.h"
 #include "YetAnotherEdGraphNode.h"
 #include "YetAnotherNodeClassHelper.h"
-#include "ModuleManager.h"
 #include "YetAnotherGraphEditor.h"
-#include "FlowControlNode.h"
 #include "FlowControlSchemaAction_NewNode.h"
+#include "Graphs/YAGraph.h"
+#include "Nodes/EmptyNodes/StartNode.h"
+#include "Nodes/FlowControlNodes/FlowControlNode.h"
 
 #define LOCTEXT_NAMESPACE "YetAnotherEdGraphSchema"
 
@@ -90,8 +86,13 @@ void UYetAnotherEdGraphSchema::GetGraphContextActions(FGraphContextMenuBuilder &
 	ContextMenuBuilder.Append(BlueprintBuilder);
 }
 
-void UYetAnotherEdGraphSchema::GetContextMenuActions(const UEdGraph * CurrentGraph, const UEdGraphNode * InGraphNode, const UEdGraphPin * InGraphPin, FMenuBuilder * MenuBuilder, bool bIsDebugging) const
-{
+void UYetAnotherEdGraphSchema::GetGraphDisplayInformation(const UEdGraph& Graph, FGraphDisplayInfo& DisplayInfo) const {
+	DisplayInfo.DisplayName = LOCTEXT("YetAnotherGraph", "Yet Another Graph");
+	DisplayInfo.Tooltip = LOCTEXT("YetAnotherGraphTooltip", "Yet Another Graph");
+}
+
+void UYetAnotherEdGraphSchema::GetContextMenuActions(UToolMenu* Menu, UGraphNodeContextMenuContext* Context) const {
+	//Super::GetContextMenuActions(Menu, Context);
 }
 
 const FPinConnectionResponse UYetAnotherEdGraphSchema::CanCreateConnection(const UEdGraphPin * A, const UEdGraphPin * B) const

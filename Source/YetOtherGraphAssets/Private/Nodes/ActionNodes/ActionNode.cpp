@@ -1,10 +1,11 @@
 // Copyright (c) 2018 Jhonny Hueller
 
-#include "ActionNode.h"
-#include "Logger.h"
-#include "Array.h"
+
 
 #define LOCTEXT_NAMESPACE "ActionNode"
+#include "Nodes/ActionNodes/ActionNode.h"
+
+#include "Utility/Logger.h"
 
 UActionNode::UActionNode()
 {

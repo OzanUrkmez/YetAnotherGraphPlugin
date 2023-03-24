@@ -5,8 +5,7 @@
 
 #include "CoreMinimal.h"
 #include "EdGraph/EdGraphNode.h"
-#include "YANode.h"
-#include "SubclassOf.h"
+#include "Nodes/YANode.h"
 #include "YetAnotherEdGraphNode.generated.h"
 
 /**

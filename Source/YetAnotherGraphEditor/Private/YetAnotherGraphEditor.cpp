@@ -1,13 +1,12 @@
 // Copyright (c) 2018 Jhonny Hueller
 #include "YetAnotherGraphEditor.h"
-#include "ModuleManager.h"
 #include "IAssetTools.h"
 #include "AssetToolsModule.h"
 #include "YetOtherAssetTypeActions.h"
 #include "EditorLogger.h"
 #include "YetAnotherNodeClassHelper.h"
-#include "YANode.h"
-#include "SimpleNode.h"
+#include "Nodes/YANode.h"
+#include "Nodes/EmptyNodes/SimpleNode.h"
 
 
 #define LOCTEXT_NAMESPACE "FYetAnotherGraphEditorModule"

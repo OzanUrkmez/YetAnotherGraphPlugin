@@ -36,16 +36,16 @@ void SYAGraphNode::UpdateGraphNode()
 		.VAlign(VAlign_Center)
 		[
 			SNew(SBorder)
-			.BorderImage(FEditorStyle::GetBrush("Graph.StateNode.Body"))
+			.BorderImage(FAppStyle::GetBrush("Graph.StateNode.Body"))
 			.Padding(FMargin(10.0f))
 			.BorderBackgroundColor(FLinearColor(0.1f, 0.1f, 0.1f))
 			[
 				SAssignNew(ErrorBorder,SBorder)
-				.BorderImage(FEditorStyle::GetBrush("Graph.StateNode.Body"))
+				.BorderImage(FAppStyle::GetBrush("Graph.StateNode.Body"))
 				.BorderBackgroundColor(FLinearColor(0.1f, 0.1f, 0.1f))
 				[
 					SNew(SBorder)
-                    .BorderImage(FEditorStyle::GetBrush("Graph.StateNode.Body"))
+                    .BorderImage(FAppStyle::GetBrush("Graph.StateNode.Body"))
                     .Padding(FMargin(10.0f))
                     .BorderBackgroundColor(FLinearColor(0.1f, 0.1f, 0.1f))
                     [
@@ -66,7 +66,7 @@ void SYAGraphNode::UpdateGraphNode()
                         .AutoHeight()
                         [
                             SAssignNew(InlineEditableText, SInlineEditableTextBlock)
-                            .Style(FEditorStyle::Get(), "Graph.StateNode.NodeTitleInlineEditableText")
+                            .Style(FAppStyle::Get(), "Graph.StateNode.NodeTitleInlineEditableText")
                             .Text(NodeTitle.Get(), &SNodeTitle::GetHeadTitle)
                             .IsReadOnly(this, &SYAGraphNode::IsNameReadOnly)
                             .OnTextCommitted(this, &SYAGraphNode::OnNameTextCommited)

@@ -4,7 +4,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "YANode.h"
+#include "Nodes/YANode.h"
 #include "SimpleNode.generated.h"
 
 /**

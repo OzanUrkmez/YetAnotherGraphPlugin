@@ -1,14 +1,11 @@
 // Copyright (c) 2018 Jhonny Hueller
 #include "YetAnotherNodeClassHelper.h"
-#include "Class.h"
-#include "FeedbackContext.h"
-#include "Package.h"
 #include "Engine/Blueprint.h"
 #include "AssetRegistryModule.h"
-#include "HotReloadInterface.h"
 #include "Editor.h"
-#include "ConstructorHelpers.h"
-#include "EditorLogger.h"
+#include "Misc/FeedbackContext.h"
+#include "Misc/HotReloadInterface.h"
+#include "UObject/ConstructorHelpers.h"
 
 #define LOCTEXT_NAMESPACE "YetAnotherNodeClassHelper"
 
@@ -285,7 +282,7 @@ void FYetAnotherNodeClassHelper::OnAssetRemoved(const struct FAssetData& AssetDa
 	if (AssetData.GetTagValue(FBlueprintTags::GeneratedClassPath, AssetClassName))
 	{
 		ConstructorHelpers::StripObjectClass(AssetClassName);
-		AssetClassName = FPackageName::ObjectPathToObjectName(*AssetClassName);
+		AssetClassName = FPackageName::ObjectPathToObjectName(AssetClassName);
 
 		TSharedPtr<FYetAnotherNodeClassNode> Node = FindBaseClassNode(RootNode, AssetClassName);
 		if (Node.IsValid() && Node->ParentNode.IsValid())

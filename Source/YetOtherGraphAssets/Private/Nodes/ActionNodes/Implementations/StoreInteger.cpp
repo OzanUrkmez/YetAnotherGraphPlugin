@@ -1,9 +1,10 @@
 // Copyright (c) 2018 Jhonny Hueller
 
-#include "StoreInteger.h"
-#include "YetAnotherGraphInterface.h"
-#include "GraphSupportComponent.h"
-#include "GraphSupportComponentInterface.h"
+
+
+#include "Nodes/ActionNodes/Implementations/StoreInteger.h"
+#include "Utility/GraphSupportComponentInterface.h"
+#include "Utility/Logger.h"
 
 #define LOCTEXT_NAMESPACE "StoreInteger"
 
@@ -11,6 +12,7 @@ UStoreInteger::UStoreInteger()
 {
     DefaultNodeTitle= LOCTEXT("StoreInteger", "Store Integer");
 }
+
 void UStoreInteger::ActionToPerform_Implementation(UObject * GraphOwner)
 {
     if (Name.IsValid())

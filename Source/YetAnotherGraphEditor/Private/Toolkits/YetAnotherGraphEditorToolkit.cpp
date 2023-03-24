@@ -2,16 +2,15 @@
 #include "YetAnotherGraphEditorToolkit.h"
 #include "EditorLogger.h"
 #include "PropertyEditorModule.h"
-#include "ModuleManager.h"
 #include "Slate.h"
-#include "BlueprintEditorUtils.h"
 #include "GraphEditorActions.h"
 #include "YAEdGraph.h"
 #include "YetAnotherEdGraphSchema.h"
 #include "EdGraphUtilities.h"
-#include "PlatformApplicationMisc.h"
 #include "YetAnotherEdGraphNode.h"
 #include "Editor.h"
+#include "Kismet2/BlueprintEditorUtils.h"
+#include "HAL/PlatformApplicationMisc.h"
 
 
 #define LOCTEXT_NAMESPACE "YetAnotherGraphEditorToolkit"
@@ -171,27 +170,27 @@ void FYetAnotherGraphEditorToolkit::SaveAsset_Execute()
 	FAssetEditorToolkit::SaveAsset_Execute();
 }
 
-void FYetAnotherGraphEditorToolkit::RegisterTabSpawners(const TSharedRef<FTabManager>& TabManager)
+void FYetAnotherGraphEditorToolkit::RegisterTabSpawners(const TSharedRef<FTabManager>& tabManager)
 {
 
-	WorkspaceMenuCategory = TabManager->AddLocalWorkspaceMenuCategory(LOCTEXT("YetAnotherToolkitWorkspaceMenu", "Graph Editor"));
+	WorkspaceMenuCategory = tabManager->AddLocalWorkspaceMenuCategory(LOCTEXT("YetAnotherToolkitWorkspaceMenu", "Graph Editor"));
 	auto WorkspaceMenuCategoryRef = WorkspaceMenuCategory.ToSharedRef();
 	
-	TabManager->RegisterTabSpawner(DetailsTabId, FOnSpawnTab::CreateSP(this, &FYetAnotherGraphEditorToolkit::HandleTabManagerSpawnTabDetails))
+	tabManager->RegisterTabSpawner(DetailsTabId, FOnSpawnTab::CreateSP(this, &FYetAnotherGraphEditorToolkit::HandleTabManagerSpawnTabDetails))
 		.SetDisplayName(LOCTEXT("DetailsTab", "Details"))
 		.SetGroup(WorkspaceMenuCategoryRef);
-	TabManager->RegisterTabSpawner(GraphTabId, FOnSpawnTab::CreateSP(this, &FYetAnotherGraphEditorToolkit::HandleTabManagerSpawnTabGraph))
+	tabManager->RegisterTabSpawner(GraphTabId, FOnSpawnTab::CreateSP(this, &FYetAnotherGraphEditorToolkit::HandleTabManagerSpawnTabGraph))
 		.SetDisplayName(LOCTEXT("GraphTab", "Graph Editor"))
 		.SetGroup(WorkspaceMenuCategoryRef);
 
-	FAssetEditorToolkit::RegisterTabSpawners(TabManager);
+	FAssetEditorToolkit::RegisterTabSpawners(tabManager);
 }
 
-void FYetAnotherGraphEditorToolkit::UnregisterTabSpawners(const TSharedRef<FTabManager>& TabManager)
+void FYetAnotherGraphEditorToolkit::UnregisterTabSpawners(const TSharedRef<FTabManager>& tabManager)
 {
-	FAssetEditorToolkit::UnregisterTabSpawners(TabManager);
-	TabManager->UnregisterTabSpawner(DetailsTabId);
-	TabManager->UnregisterTabSpawner(GraphTabId);
+	FAssetEditorToolkit::UnregisterTabSpawners(tabManager);
+	tabManager->UnregisterTabSpawner(DetailsTabId);
+	tabManager->UnregisterTabSpawner(GraphTabId);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

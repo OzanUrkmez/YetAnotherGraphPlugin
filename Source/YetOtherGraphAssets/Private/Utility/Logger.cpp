@@ -1,3 +1,4 @@
 // Copyright (c) 2018 Jhonny Hueller
-#include "Logger.h"
+#include "Utility/Logger.h"
+
 DEFINE_LOG_CATEGORY(LogYetOtherGraphAssets);

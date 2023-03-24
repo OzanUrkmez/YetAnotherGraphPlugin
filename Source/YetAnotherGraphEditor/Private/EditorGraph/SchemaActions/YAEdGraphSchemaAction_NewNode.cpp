@@ -1,8 +1,8 @@
 // Copyright (c) 2018 Jhonny Hueller
 #include "YAEdGraphSchemaAction_NewNode.h"
-#include "YAGraph.h"
 #include "YetAnotherEdGraphNode.h"
 #include "EdGraph/EdGraph.h"
+#include "Graphs/YAGraph.h"
 
 #define LOCTEXT_NAMESPACE "YAEdGraphSchemaAction_NewNode"
 

@@ -1,13 +1,11 @@
 // Copyright (c) 2018 Jhonny Hueller
 #include "YetAnotherEdGraphNode.h"
-#include "YANode.h"
-#include "YAGraph.h"
 #include "YAEdGraph.h"
 #include "SYAGraphNode.h"
 #include "IDetailsView.h"
 #include "PropertyEditorModule.h"
-#include "ModuleManager.h"
 #include "EditorLogger.h"
+#include "Graphs/YAGraph.h"
 
 #define LOCTEXT_NAMESPACE "YetAnotherEdGraphNode"
 

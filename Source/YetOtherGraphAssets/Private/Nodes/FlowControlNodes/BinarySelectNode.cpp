@@ -1,7 +1,8 @@
 // Copyright (c) 2018 Jhonny Hueller
-#include "BinarySelectNode.h"
-#include "Logger.h"
-#include "YAGraph.h"
+
+#include "Nodes/FlowControlNodes/BinarySelectNode.h"
+#include "Graphs/YAGraph.h"
+#include "Utility/Logger.h"
 
 #define LOCTEXT_NAMESPACE "BinarySelectNode"
 

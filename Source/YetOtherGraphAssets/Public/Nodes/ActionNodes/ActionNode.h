@@ -3,8 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "SimpleNode.h"
-#include "YAGraph.h"
+#include "Nodes/YANode.h"
+#include "Nodes/EmptyNodes/SimpleNode.h"
 #include "ActionNode.generated.h"
 
 /**

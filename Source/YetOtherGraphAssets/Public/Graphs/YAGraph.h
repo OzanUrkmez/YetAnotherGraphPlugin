@@ -2,9 +2,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
-#include "SubclassOf.h"
-#include "Logger.h"
 #include "YAGraph.generated.h"
 
 #define LOCTEXT_NAMESPACE "UYAGraph"

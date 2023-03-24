@@ -1,10 +1,9 @@
 // Copyright (c) 2018 Jhonny Hueller
 #include "YAEdGraph.h"
-#include "YANode.h"
 #include "YetAnotherEdGraphNode.h"
 #include "EditorLogger.h"
 #include "EdGraph/EdGraphPin.h"
-#include "YAGraph.h"
+#include "Graphs/YAGraph.h"
 
 bool UYAEdGraph::IsNameUnique(const FText & InName)
 {

@@ -1,10 +1,7 @@
 // Copyright (c) 2018 Jhonny Hueller
 
-#include "GraphSupportComponent.h"
-#include "Logger.h"
-#include "Map.h"
 
-
+#include "Utility/GraphSupportComponent.h"
 // Sets default values for this component's properties
 UGraphSupportComponent::UGraphSupportComponent()
 {
@@ -44,7 +41,7 @@ bool UGraphSupportComponent::SetBooleanVariable_Implementation(FName BooleanName
 
 bool UGraphSupportComponent::GetBooleanVariable_Implementation(FName BooleanName) const
 {
-    return NamedBooleans.Find(BooleanName);
+    return NamedBooleans.Find(BooleanName) ? *NamedBooleans.Find(BooleanName) : false;
 }
 
 bool UGraphSupportComponent::SetIntegerVariable_Implementation(FName IntegerName, int32 Value)

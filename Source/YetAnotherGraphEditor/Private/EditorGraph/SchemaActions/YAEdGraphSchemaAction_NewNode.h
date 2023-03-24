@@ -3,8 +3,7 @@
 
 #include "CoreMinimal.h"
 #include "EdGraph/EdGraphSchema.h"
-#include "SubclassOf.h"
-#include "YANode.h"
+#include "Nodes/YANode.h"
 #include "YAEdGraphSchemaAction_NewNode.generated.h"
 
 /**
@@ -24,6 +23,4 @@ public:
 
     virtual UEdGraphNode* CreateEditorNode(UEdGraph * ParentGraph, bool bSelectNewNode, UYANode* AssetNode);
 	TSubclassOf<UYANode>NewNodeClass;
-
-
 };

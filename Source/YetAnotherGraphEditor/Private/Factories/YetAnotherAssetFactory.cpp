@@ -1,6 +1,6 @@
 // Copyright (c) 2018 Jhonny Hueller
 #include "YetAnotherAssetFactory.h"
-#include "YAGraph.h"
+#include "Graphs/YAGraph.h"
 
 UYetAnotherAssetFactory::UYetAnotherAssetFactory()
 {

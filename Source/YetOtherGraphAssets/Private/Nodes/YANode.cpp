@@ -1,8 +1,8 @@
 // Copyright (c) 2018 Jhonny Hueller
-#include "YANode.h"
-#include "YAGraph.h"
-#include "Components/ActorComponent.h"
-#include "GameFramework/Actor.h"
+
+#include "Nodes/YANode.h"
+
+#include "Graphs/YAGraph.h"
 
 #define LOCTEXT_NAMESPACE "YANode" 
 
@@ -91,12 +91,12 @@ bool UYANode::RemoveLinkedNode(UYANode * NodeToRemove)
 
 bool UYANode::RemoveNodeFromParents(UYANode * NodeToRemove)
 {
-	return ParentNodes.Remove(NodeToRemove);
+	return ParentNodes.Remove(NodeToRemove) > 0;
 }
 
 bool UYANode::RemoveNodeFromChilds(UYANode * NodeToRemove)
 {
-	return ChildNodes.Remove(NodeToRemove);
+	return ChildNodes.Remove(NodeToRemove) > 0;
 }
 
 #if WITH_ENGINE

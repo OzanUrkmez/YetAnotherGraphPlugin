@@ -1,5 +1,6 @@
 #include "YetOtherGraphAssets.h"
-#include "Logger.h"
+
+#include "Utility/Logger.h"
 
 #define LOCTEXT_NAMESPACE "FYetOtherGraphAssetsModule"
 

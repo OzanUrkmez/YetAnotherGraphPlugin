@@ -1,9 +1,11 @@
 // Copyright (c) 2018 Jhonny Hueller
-#include "YAGraph.h"
-#include "YANode.h"
-#include "StartNode.h"
+#include "Graphs/YAGraph.h"
+
 #include "Components/ActorComponent.h"
 #include "GameFramework/Actor.h"
+#include "Nodes/YANode.h"
+#include "Nodes/EmptyNodes/StartNode.h"
+#include "Utility/Logger.h"
 
 #define LOCTEXT_NAMESPACE "UYAGraph"
 

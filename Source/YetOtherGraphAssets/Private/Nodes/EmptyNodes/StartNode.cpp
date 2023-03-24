@@ -1,5 +1,6 @@
 // Copyright (c) 2018 Jhonny Hueller
-#include "StartNode.h"
+
+#include "Nodes/EmptyNodes/StartNode.h"
 
 #define LOCTEXT_NAMESPACE "StartNode"
 

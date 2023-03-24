@@ -1,11 +1,8 @@
 // Copyright (c) 2018 Jhonny Hueller
 
-#include "NthSelector.h"
-#include "YAGraph.h"
-#include "Logger.h"
-#include "YetAnotherGraphInterface.h"
-#include "GraphSupportComponent.h"
-#include "GraphSupportComponentInterface.h"
+#include "Nodes/FlowControlNodes/Implementations/NthSelector.h"
+#include "Utility/GraphSupportComponentInterface.h"
+#include "Utility/Logger.h"
 
 #define LOCTEXT_NAMESPACE "NthSelector"
 

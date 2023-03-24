@@ -1,6 +1,5 @@
 // Copyright (c) 2018 Jhonny Hueller
 #include "YAConnectionDrawingPolicy.h"
-#include "DrawElements.h"
 
 FYAConnectionDrawingPolicy::FYAConnectionDrawingPolicy(int32 InBackLayerID, int32 InFrontLayerID, float ZoomFactor, const FSlateRect& InClippingRect, FSlateWindowElementList& InDrawElements, UEdGraph* InGraphObj)
 	: FConnectionDrawingPolicy(InBackLayerID, InFrontLayerID, ZoomFactor, InClippingRect, InDrawElements)

@@ -1,11 +1,9 @@
 // Copyright (c) 2018 Jhonny Hueller
 
-#include "BooleanSelector.h"
-#include "YAGraph.h"
-#include "YetAnotherGraphInterface.h"
-#include "Logger.h"
-#include "GraphSupportComponent.h"
-#include "GraphSupportComponentInterface.h"
+#include "Nodes/FlowControlNodes/Implementations/BooleanSelector.h"
+
+#include "Utility/GraphSupportComponentInterface.h"
+#include "Utility/Logger.h"
 
 #define LOCTEXT_NAMESPACE "BooleanSelector"
 

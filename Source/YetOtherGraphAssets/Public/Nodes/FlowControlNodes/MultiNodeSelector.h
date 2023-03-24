@@ -3,7 +3,6 @@
 
 #include "CoreMinimal.h"
 #include "FlowControlNode.h"
-#include "YAGraph.h"
 #include "MultiNodeSelector.generated.h"
 
 #define LOCTEXT_NAMESPACE "MultiNodeSelector"
