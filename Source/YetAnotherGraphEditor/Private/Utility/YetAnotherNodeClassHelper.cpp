@@ -128,8 +128,7 @@ FYetAnotherNodeClassHelper::FYetAnotherNodeClassHelper(UClass* InRootClass)
 	AssetRegistryModule.Get().OnAssetRemoved().AddRaw(this, &FYetAnotherNodeClassHelper::OnAssetRemoved);
 
 	// Register to have Populate called when doing a Hot Reload.
-	IHotReloadInterface& HotReloadSupport = FModuleManager::LoadModuleChecked<IHotReloadInterface>("HotReload");
-	HotReloadSupport.OnHotReload().AddRaw(this, &FYetAnotherNodeClassHelper::OnHotReload);
+	FCoreUObjectDelegates::ReloadCompleteDelegate.AddRaw(this, &FYetAnotherNodeClassHelper::OnHotReload);
 
 	// Register to have Populate called when a Blueprint is compiled.
 	GEditor->OnBlueprintCompiled().AddRaw(this, &FYetAnotherNodeClassHelper::InvalidateCache);
@@ -151,8 +150,7 @@ FYetAnotherNodeClassHelper::~FYetAnotherNodeClassHelper()
 		// Unregister to have Populate called when doing a Hot Reload.
 		if (FModuleManager::Get().IsModuleLoaded(TEXT("HotReload")))
 		{
-			IHotReloadInterface& HotReloadSupport = FModuleManager::GetModuleChecked<IHotReloadInterface>("HotReload");
-			HotReloadSupport.OnHotReload().RemoveAll(this);
+			FCoreUObjectDelegates::ReloadCompleteDelegate.RemoveAll(this);
 		}
 
 		// Unregister to have Populate called when a Blueprint is compiled.
@@ -304,7 +302,7 @@ void FYetAnotherNodeClassHelper::InvalidateCache()
 	UpdateAvailableBlueprintClasses();
 }
 
-void FYetAnotherNodeClassHelper::OnHotReload(bool bWasTriggeredAutomatically)
+void FYetAnotherNodeClassHelper::OnHotReload(EReloadCompleteReason reason)
 {
 	InvalidateCache();
 }

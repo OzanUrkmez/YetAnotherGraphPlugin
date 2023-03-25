@@ -123,13 +123,6 @@ void FYetAnotherGraphEditorToolkit::InitGraphAssetEditor(const EToolkitMode::Typ
 			->SetOrientation(Orient_Vertical)
 			->Split
 			(
-				FTabManager::NewStack()
-				->AddTab(GetToolbarTabId(), ETabState::OpenedTab)
-				->SetHideTabWell(true)
-				->SetSizeCoefficient(0.2f)
-			)
-			->Split
-			(
 				FTabManager::NewSplitter()
 				->SetOrientation(Orient_Horizontal)
 				->SetSizeCoefficient(0.8f)

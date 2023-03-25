@@ -86,7 +86,7 @@ public:
 	void OnAssetAdded(const struct FAssetData& AssetData);
 	void OnAssetRemoved(const struct FAssetData& AssetData);
 	void InvalidateCache();
-	void OnHotReload(bool bWasTriggeredAutomatically);
+	void OnHotReload(EReloadCompleteReason reason);
 
 	static void AddUnknownClass(const FYetAnotherNodeClassData& ClassData);
 	static bool IsClassKnown(const FYetAnotherNodeClassData& ClassData);
