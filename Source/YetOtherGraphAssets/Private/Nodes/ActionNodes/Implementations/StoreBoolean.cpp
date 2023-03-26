@@ -1,11 +1,12 @@
 // Copyright (c) 2018 Jhonny Hueller
 
 
-#define LOCTEXT_NAMESPACE "StoreBoolean"
 #include "Nodes/ActionNodes/Implementations/StoreBoolean.h"
 
 #include "Utility/GraphSupportComponentInterface.h"
 #include "Utility/Logger.h"
+
+#define LOCTEXT_NAMESPACE "StoreBoolean"
 
 UStoreBoolean::UStoreBoolean()
 {
