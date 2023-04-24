@@ -19,9 +19,9 @@ public:
     UActionNode();
 
     UFUNCTION(BlueprintNativeEvent, Category = "Action Node")
-    void ActionToPerform(UObject* GraphOwner);
-    virtual void ActionToPerform_Implementation(UObject* GraphOwner) {}
+    void ActionToPerform();
+    virtual void ActionToPerform_Implementation() {}
 
     //Inherited from UYANode
-    UYANode* GetNodePointer_Implementation() override;
+    UYANode* ExecuteNodeGetNode_Implementation() override;
 };

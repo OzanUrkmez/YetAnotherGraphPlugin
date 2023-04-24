@@ -23,6 +23,6 @@ public:
         int32 Value;
 	
     //Inherited from UActionNode
-    void ActionToPerform_Implementation(UObject* GraphOwner) override;
+	virtual void ActionToPerform_Implementation() override;
 	
 };

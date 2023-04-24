@@ -3,7 +3,7 @@
 
 #include "Nodes/ActionNodes/Implementations/StoreBoolean.h"
 
-#include "Utility/GraphSupportComponentInterface.h"
+#include "Graphs/YAGraph.h"
 #include "Utility/Logger.h"
 
 #define LOCTEXT_NAMESPACE "StoreBoolean"
@@ -12,40 +12,15 @@ UStoreBoolean::UStoreBoolean()
 {
     DefaultNodeTitle= LOCTEXT("StoreBoolean", "Store Boolean");
 }
-void UStoreBoolean::ActionToPerform_Implementation(UObject * GraphOwner)
+void UStoreBoolean::ActionToPerform_Implementation()
 {
-
     if (Name.IsValid())
     {
-
-        UObject* Support = nullptr;
-
-        if (GraphOwner->GetClass()->ImplementsInterface(UGraphSupportComponentInterface::StaticClass()))
-        {
-            IGraphSupportComponentInterface* Interface = Cast<IGraphSupportComponentInterface>(GraphOwner);
-            Support = Interface->Execute_GetGraphSupportComponent(GraphOwner);
-        }
-        else
-        {
-            
-            if (GraphOwner->GetClass()->ImplementsInterface(UYetAnotherGraphInterface::StaticClass()))
-                Support = GraphOwner;
-            
-        }
-
-        if (Support!=nullptr)
-        {
-            IYetAnotherGraphInterface* Interface = Cast<IYetAnotherGraphInterface>(Support);
-            if (Interface)
-                Interface->Execute_SetBooleanVariable(Support, Name, true);
-        }
-        else
-            ELog("No graph interfaces has been found.");
-        
+        Graph->SetBooleanVariable(Name, true);
     }
     else
     {
-        ELog("The variable name isn't valid.");
+        ELog("The variable name %s isn't valid. in Node %s child of %s", *Name.ToString(), *GetNodeTitle().ToString(), *Graph->GetFullName());
     }
 }
 

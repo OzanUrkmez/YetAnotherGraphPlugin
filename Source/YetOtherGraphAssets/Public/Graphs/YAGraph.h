@@ -2,12 +2,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Nodes/YANode.h"
+#include "Nodes/EmptyNodes/StartNode.h"
 #include "YAGraph.generated.h"
 
 #define LOCTEXT_NAMESPACE "UYAGraph"
-
-class UYANode;
-class UStartNode;
 
 /**
  * 
@@ -20,6 +19,8 @@ class YETOTHERGRAPHASSETS_API UYAGraph : public UObject
 public:
 	UYAGraph();
 
+	//fundamental graph functionality ---------------------------------------
+	
 	UPROPERTY(BlueprintReadOnly, Category = "Graph Data")
 		TArray<UYANode*>Nodes;
 
@@ -29,26 +30,9 @@ public:
     UPROPERTY(BlueprintReadOnly, Category = "Graph Data")
         TMap<UYANode*, FString>NodesNames;
 
-    UPROPERTY(BlueprintReadWrite, Category = "Graph Data")
-        UObject* Owner;
-
 	UFUNCTION(BlueprintPure, Category = "Graph Data")
 		TArray<UStartNode*> GetStartingNodes();
-
-    UFUNCTION(BlueprintCallable, Category = "Graph Data")
-        void InitGraph(UObject* ParentObject);
-
-    
-#if WITH_ENGINE
-    //we need this because otherwise during visual scripting with blueprints we can't use anything from WorldContextObject like "get game mode" or "get player controller"
-    virtual class UWorld* GetWorld() const override;
-#endif
-
-
-#if WITH_EDITORONLY_DATA
-
-public:
-
+	
 	UPROPERTY()
 	class UEdGraph* EdGraph;
 
@@ -64,7 +48,21 @@ public:
 	virtual void AddNode(UYANode* InNode);
 	virtual void RemoveNode(UYANode* NodeToRemove);
 
-#endif
+	//basic graph operations ---------------------------------------
+
+	bool SetBooleanVariable(FName BooleanName, bool Value);
+	bool GetBooleanVariable(FName BooleanName) const;
+	bool SetIntegerVariable(FName IntegerName, int32 Value);
+	int32 GetIntegerVariable(FName IntegerName, bool& Result) const;
+
+protected:
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Graph Support")
+	TMap<FName, bool>NamedBooleans;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Graph Support")
+	TMap<FName, int32>NamedIntegers;
+
 };
 
 #undef LOCTEXT_NAMESPACE

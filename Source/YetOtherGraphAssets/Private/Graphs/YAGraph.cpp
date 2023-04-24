@@ -1,13 +1,9 @@
 // Copyright (c) 2018 Jhonny Hueller
 #include "Graphs/YAGraph.h"
 
-#include "Components/ActorComponent.h"
-#include "GameFramework/Actor.h"
 #include "Nodes/YANode.h"
 #include "Nodes/EmptyNodes/StartNode.h"
 #include "Utility/Logger.h"
-
-#define LOCTEXT_NAMESPACE "UYAGraph"
 
 UYAGraph::UYAGraph()
 {
@@ -29,31 +25,6 @@ TArray<UStartNode*> UYAGraph::GetStartingNodes()
 	return NodesArray;
 }
 
-void UYAGraph::InitGraph(UObject * ParentObject)
-{
-    Owner = ParentObject;
-    //it seems that a Rename after the asset has already been assigned in a variable prevents referencing it properly on runtime
-    //Rename(nullptr, ParentObject);
-}
-
-
-#if WITH_ENGINE
-
-UWorld * UYAGraph::GetWorld() const
-{
-    if (Owner->IsA(UActorComponent::StaticClass()) || Owner->IsA(AActor::StaticClass()))
-    {
-        return Owner->GetWorld();
-    }
-    
-    ELog("It hasn't been possible to retrieve the world context from %s for %s", *Owner->GetFullName(), *GetFullName());
-    return nullptr;
-    
-}
-
-#endif
-
-#if WITH_EDITORONLY_DATA
 void UYAGraph::AddNode(UYANode * InNode)
 {
 	InNode->SetGraph(this);
@@ -80,6 +51,22 @@ void UYAGraph::RemoveNode(UYANode * NodeToRemove)
 		ELog("The node is not present inside the graph.");
 	}
 }
-#endif
 
-#undef LOCTEXT_NAMESPACE
+bool UYAGraph::SetBooleanVariable(FName BooleanName, bool Value) {
+	NamedBooleans.Add(BooleanName, Value);
+	return false;
+}
+
+bool UYAGraph::GetBooleanVariable(FName BooleanName) const {
+	return NamedBooleans.Find(BooleanName) ? *NamedBooleans.Find(BooleanName) : false;
+}
+
+bool UYAGraph::SetIntegerVariable(FName IntegerName, int32 Value) {
+	NamedIntegers.Add(IntegerName, Value);
+	return false;
+}
+
+int32 UYAGraph::GetIntegerVariable(FName IntegerName, bool& Result) const {
+	Result = NamedIntegers.Contains(IntegerName);
+	return NamedIntegers.Contains(IntegerName)? *NamedIntegers.Find(IntegerName) : 0;
+}

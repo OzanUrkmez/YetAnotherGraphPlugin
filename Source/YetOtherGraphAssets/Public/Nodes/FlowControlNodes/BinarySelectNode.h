@@ -17,14 +17,15 @@ public:
     UBinarySelectNode();
 
     UFUNCTION(BlueprintNativeEvent, Category = "Binary Selector")
-        bool BooleanEvaluation(UObject* GraphOwner);
-    virtual bool BooleanEvaluation_Implementation(UObject* GraphOwner) { return false; }
+        bool BooleanEvaluation();
+    virtual bool BooleanEvaluation_Implementation() { return false; }
 	
 
     //inherited from YANode
-    UYANode* GetNodePointer_Implementation() override;
+    UYANode* ExecuteNodeGetNode_Implementation() override;
 
 protected:
+	//TODO: make this and the check in action node enforced, or at least ensure here. 
     UPROPERTY()
         int32 MaxNumberOfSubNodes = 2;
 	

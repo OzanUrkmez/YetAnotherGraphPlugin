@@ -13,10 +13,10 @@ UBinarySelectNode::UBinarySelectNode()
 
 
 
-UYANode * UBinarySelectNode::GetNodePointer_Implementation()
+UYANode * UBinarySelectNode::ExecuteNodeGetNode_Implementation()
 {
-    if (ChildNodes.Num() == 1) return BooleanEvaluation(Graph->Owner) ? ChildNodes[0]->GetNodePointer() : nullptr;
-    if (ChildNodes.Num() == 2) return BooleanEvaluation(Graph->Owner) ? ChildNodes[0]->GetNodePointer() : ChildNodes[1]->GetNodePointer();
+    if (ChildNodes.Num() == 1) return BooleanEvaluation() ? ChildNodes[0]->ExecuteNodeGetNode() : nullptr;
+    if (ChildNodes.Num() == 2) return BooleanEvaluation() ? ChildNodes[0]->ExecuteNodeGetNode() : ChildNodes[1]->ExecuteNodeGetNode();
     ELog("There are %d subnode on a binary select node.", ChildNodes.Num());
     return nullptr;
 }

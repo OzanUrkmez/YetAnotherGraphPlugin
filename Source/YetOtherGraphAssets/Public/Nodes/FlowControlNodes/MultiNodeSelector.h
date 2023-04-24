@@ -18,12 +18,10 @@ class YETOTHERGRAPHASSETS_API UMultiNodeSelector : public UFlowControlNode
 public:
 
     UFUNCTION(BlueprintNativeEvent, Category = "Multi Node Selector")
-    int32 IndexEvaluation(UObject* GraphOwner);
-    virtual int32 IndexEvaluation_Implementation(UObject* GraphOwner) { return 0; }
+    int32 IndexEvaluation();
+    virtual int32 IndexEvaluation_Implementation() { return 0; }
 
-
-    //inherited from YANode
-    UYANode* GetNodePointer_Implementation() override;
+	UYANode* ExecuteNodeGetNode_Implementation() override;
 	
 	
 };

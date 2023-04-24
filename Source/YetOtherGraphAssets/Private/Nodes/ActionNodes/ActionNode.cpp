@@ -2,26 +2,29 @@
 
 
 
-#define LOCTEXT_NAMESPACE "ActionNode"
 #include "Nodes/ActionNodes/ActionNode.h"
 
+#include "Graphs/YAGraph.h"
 #include "Utility/Logger.h"
+
+#define LOCTEXT_NAMESPACE "ActionNode"
 
 UActionNode::UActionNode()
 {
     DefaultNodeTitle= LOCTEXT("ActionNode", "Action Node");
 }
 
-UYANode * UActionNode::GetNodePointer_Implementation()
+UYANode * UActionNode::ExecuteNodeGetNode_Implementation()
 {
     if (ChildNodes.Num() <= 1)
     {
-        ActionToPerform(Graph->Owner);
-        return (ChildNodes.IsValidIndex(0)) ? ChildNodes[0]->GetNodePointer() : nullptr;
+        ActionToPerform();
+        return (ChildNodes.IsValidIndex(0)) ? ChildNodes[0]->ExecuteNodeGetNode() : nullptr;
     }
     else
     {
-        ELog("There should be at most one subnode on an ActionNode");
+        //TODO: is there things in place to ensure this?
+        ELog("There should be at most one subnode on an ActionNode"); 
         return nullptr;
     }
 }

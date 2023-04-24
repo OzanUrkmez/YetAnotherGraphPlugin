@@ -3,7 +3,8 @@
 
 
 #include "Nodes/ActionNodes/Implementations/StoreInteger.h"
-#include "Utility/GraphSupportComponentInterface.h"
+
+#include "Graphs/YAGraph.h"
 #include "Utility/Logger.h"
 
 #define LOCTEXT_NAMESPACE "StoreInteger"
@@ -13,33 +14,15 @@ UStoreInteger::UStoreInteger()
     DefaultNodeTitle= LOCTEXT("StoreInteger", "Store Integer");
 }
 
-void UStoreInteger::ActionToPerform_Implementation(UObject * GraphOwner)
+void UStoreInteger::ActionToPerform_Implementation()
 {
     if (Name.IsValid())
     {
-        UObject* Support = nullptr;
-
-        if (GraphOwner->GetClass()->ImplementsInterface(UGraphSupportComponentInterface::StaticClass()))
-        {
-            IGraphSupportComponentInterface* Interface = Cast<IGraphSupportComponentInterface>(GraphOwner);
-            Support = Interface->Execute_GetGraphSupportComponent(GraphOwner);
-        }
-        else
-            if (GraphOwner->GetClass()->ImplementsInterface(UYetAnotherGraphInterface::StaticClass()))
-                Support = GraphOwner;
-
-        if (Support != nullptr)
-        {
-            IYetAnotherGraphInterface* Interface = Cast<IYetAnotherGraphInterface>(Support);
-            if (Interface)
-                Interface->Execute_SetIntegerVariable(Support, Name, Value);
-        }
-        else
-            ELog("No graph interfaces has been found.");
+        Graph->SetIntegerVariable(Name, Value);
     }
     else
     {
-        ELog("The variable name isn't valid.");
+        ELog("The variable name %s isn't valid. in Node %s child of %s", *Name.ToString(), *GetNodeTitle().ToString(), *Graph->GetFullName());
     }
 }
 

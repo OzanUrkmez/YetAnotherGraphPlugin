@@ -11,7 +11,7 @@ UYANode::UYANode()
 	DefaultNodeTitle = LOCTEXT("Node Title", "Node");
 }
 
-UYANode * UYANode::GetNodePointer_Implementation()
+UYANode * UYANode::ExecuteNodeGetNode_Implementation()
 {
 	return this;
 }
@@ -36,7 +36,7 @@ TArray<UYANode*> UYANode::GetChildren()
 	TArray<UYANode*>ReturnArray;
 	for (UYANode* Node : ChildNodes)
 	{
-        auto* object = Node->GetNodePointer();
+        auto* object = Node->ExecuteNodeGetNode();
 		if(object)ReturnArray.Add(object);
 	}
 	return ReturnArray;

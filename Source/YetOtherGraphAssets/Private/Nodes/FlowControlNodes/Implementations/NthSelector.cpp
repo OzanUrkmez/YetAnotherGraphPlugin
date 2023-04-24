@@ -1,7 +1,8 @@
 // Copyright (c) 2018 Jhonny Hueller
 
 #include "Nodes/FlowControlNodes/Implementations/NthSelector.h"
-#include "Utility/GraphSupportComponentInterface.h"
+
+#include "Graphs/YAGraph.h"
 #include "Utility/Logger.h"
 
 #define LOCTEXT_NAMESPACE "NthSelector"
@@ -11,32 +12,15 @@ UNthSelector::UNthSelector()
     DefaultNodeTitle= LOCTEXT("NthSelector", "'Nth Selector");
 }
 
-int32 UNthSelector::IndexEvaluation_Implementation(UObject* GraphOwner)
+int32 UNthSelector::IndexEvaluation_Implementation()
 {
     int32 Integer = 0;
     bool Result = false;
-    UObject* Support=nullptr;
 
-    if (GraphOwner->GetClass()->ImplementsInterface(UGraphSupportComponentInterface::StaticClass()))
-    {
-        IGraphSupportComponentInterface* Interface = Cast<IGraphSupportComponentInterface>(GraphOwner);
-        Support = Interface->Execute_GetGraphSupportComponent(GraphOwner);
-    }
-    else
-        if (GraphOwner->GetClass()->ImplementsInterface(UYetAnotherGraphInterface::StaticClass()))
-            Support = GraphOwner;
-
-    if (Support != nullptr)
-    {
-        IYetAnotherGraphInterface* Interface = Cast<IYetAnotherGraphInterface>(Support);
-        if (Interface)
-            Integer = Interface->Execute_GetIntegerVariable(Support, IndexName, Result);
-    }
-    else
-        ELog("No graph interfaces has been found.");
+    Graph->GetIntegerVariable(IndexName, Result);
 
     if (!Result)
-        ELog("%s:Error upon looking for an integer", *GraphOwner->GetClass()->GetDisplayNameText().ToString());
+        ELog("%s:Error upon looking for an integer %s", *Graph->GetFullName(), *IndexName.ToString());
 
    
     return Integer;

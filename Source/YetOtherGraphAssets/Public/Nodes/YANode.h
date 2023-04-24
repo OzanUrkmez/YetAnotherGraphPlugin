@@ -37,8 +37,8 @@ public:
 		bool HasOutputPins();
 
 	UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Node Data")
-		UYANode* GetNodePointer();
-        virtual UYANode* GetNodePointer_Implementation();
+		UYANode* ExecuteNodeGetNode();
+        virtual UYANode* ExecuteNodeGetNode_Implementation();
 
 
 	virtual void SetGraph(UYAGraph* InGraph);
