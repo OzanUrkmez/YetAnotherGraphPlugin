@@ -15,19 +15,12 @@ class UYetAnotherAssetFactory : public UFactory
 	
 public:
 	UYetAnotherAssetFactory();
-	/**
-	* Create a new object by class.
-	*
-	* @param InClass
-	* @param InParent
-	* @param InName
-	* @param Flags
-	* @param Context
-	* @param Warn
-	* @return The new object.
-	*/
-	virtual UObject* FactoryCreateNew(UClass* InClass, UObject* InParent, FName InName, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn);
-
 	
+	UPROPERTY(EditAnywhere, Category = YetAnotherAssetFactory, meta = (AllowAbstract = "", BlueprintBaseOnly = ""))
+	TSubclassOf<class UYAGraph> ParentClass;
+	
+	virtual bool ConfigureProperties() override;
+
+	virtual UObject* FactoryCreateNew(UClass* InClass, UObject* InParent, FName InName, EObjectFlags Flags, UObject* Context, FFeedbackContext* Warn) override;
 	
 };

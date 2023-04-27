@@ -27,7 +27,7 @@ public class YetAnotherGraphEditor : ModuleRules
                 "YetAnotherGraphEditor/Private/EditorGraph/EditorNodes",
                 "YetAnotherGraphEditor/Private/EditorGraph/SlateWidgets",
 
-            }
+			}
             );
 			
 		
@@ -51,8 +51,9 @@ public class YetAnotherGraphEditor : ModuleRules
                 "EditorStyle",
                 "UnrealEd",
                 "AssetTools",
+                "ClassViewer",
                 "GraphEditor",
-                "ApplicationCore",
+                "ApplicationCore", "ScriptPlugin", "ScriptPlugin", "ScriptPlugin",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
