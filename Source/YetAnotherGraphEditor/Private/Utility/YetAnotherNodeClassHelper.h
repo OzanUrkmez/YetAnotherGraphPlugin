@@ -2,8 +2,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UObject/ObjectMacros.h"
-#include "UObject/WeakObjectPtr.h"
 #include "YetAnotherNodeClassHelper.generated.h"
 
 /**
@@ -15,7 +13,7 @@ struct FYetAnotherNodeClassData
 {
 	GENERATED_USTRUCT_BODY()
 
-	FYetAnotherNodeClassData() {}
+	FYetAnotherNodeClassData();
 	FYetAnotherNodeClassData(UClass* InClass, const FString& InDeprecatedMessage);
 	FYetAnotherNodeClassData(const FString& InAssetName, const FString& InGeneratedClassPackage, const FString& InClassName, UClass* InClass);
 
