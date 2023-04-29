@@ -442,7 +442,7 @@ void FYetAnotherNodeClassHelper::BuildClassGraph()
 	TArray<FAssetData> BlueprintList;
 
 	FARFilter Filter;
-	Filter.ClassNames.Add(UBlueprint::StaticClass()->GetFName());
+	Filter.ClassPaths.Add(UBlueprint::StaticClass()->GetClassPathName());
 	AssetRegistryModule.Get().GetAssets(Filter, BlueprintList);
 
 	for (int32 i = 0; i < BlueprintList.Num(); i++)
@@ -495,19 +495,19 @@ void FYetAnotherNodeClassHelper::UpdateAvailableBlueprintClasses()
 		FAssetRegistryModule& AssetRegistryModule = FModuleManager::GetModuleChecked<FAssetRegistryModule>(TEXT("AssetRegistry"));
 		const bool bSearchSubClasses = true;
 
-		TArray<FName> ClassNames;
-		TSet<FName> DerivedClassNames;
+		TArray<FTopLevelAssetPath> ClassNames;
+		TSet< FTopLevelAssetPath > DerivedClassPaths;
 
 		for (TMap<UClass*, int32>::TIterator It(BlueprintClassCount); It; ++It)
 		{
 			ClassNames.Reset();
-			ClassNames.Add(It.Key()->GetFName());
+			ClassNames.Add(It.Key()->GetClassPathName());
 
-			DerivedClassNames.Empty(DerivedClassNames.Num());
-			AssetRegistryModule.Get().GetDerivedClassNames(ClassNames, TSet<FName>(), DerivedClassNames);
+			DerivedClassPaths.Empty(DerivedClassPaths.Num());
+			AssetRegistryModule.Get().GetDerivedClassNames(ClassNames, {}, DerivedClassPaths);
 
 			int32& Count = It.Value();
-			Count = DerivedClassNames.Num();
+			Count = DerivedClassPaths.Num();
 		}
 	}
 }
